@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Torto Arado — Dossiê de Apresentação</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  --terra:    #3B1A08;
+  --ocre:     #C07020;
+  --palha:    #E8D5A3;
+  --areia:    #F6EDD8;
+  --fundo:    #FAF8F3;
+  --cinza:    #6B5F4A;
+  --escuro:   #1E140A;
+  --verde:    #2D4A1E;
+  --sangue:   #7A1818;
+  --linha:    #DDD0B0;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--fundo);
+  color: var(--escuro);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:100;
+  background: rgba(250,248,243,0.96);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--linha);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 3rem; height: 52px;
+}
+.nav-brand {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--ocre);
+}
+.nav-links { display:flex; gap:0; list-style:none; }
+.nav-links a {
+  display:block; padding: 0 1.1rem; height:52px; line-height:52px;
+  font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase;
+  color: var(--cinza); text-decoration:none;
+  transition: color .2s;
+}
+.nav-links a:hover, .nav-links a.ativo { color: var(--ocre); }
+
+/* ── SEÇÕES ── */
+section { min-height: 100vh; padding: 80px 0 60px; }
+.container { max-width: 960px; margin: 0 auto; padding: 0 2.5rem; }
+
+/* ── CABEÇALHOS DE SEÇÃO ── */
+.sec-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--ocre); margin-bottom: 1rem;
+}
+.sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem,5vw,3.8rem);
+  font-weight: 700; line-height: 1.05;
+  color: var(--terra); margin-bottom: 2.5rem;
+}
+.sec-title em { font-style: italic; color: var(--ocre); }
+
+/* ─────────────────────────────
+   CAPA / HERO
+───────────────────────────── */
+#capa {
+  background: var(--escuro);
+  display: flex; flex-direction: column; justify-content: center;
+  position: relative; overflow: hidden;
+}
+#capa::before {
+  content: '';
+  position: absolute; inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 40%, rgba(192,112,32,.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(122,24,24,.15) 0%, transparent 70%);
+}
+.capa-inner { position:relative; z-index:1; }
+
+.capa-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--ocre); margin-bottom: 2rem;
+}
+.capa-titulo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem,12vw,9rem);
+  font-weight: 700; line-height: 0.88;
+  color: var(--areia); margin-bottom: .5rem;
+  letter-spacing: -0.02em;
+}
+.capa-titulo span { color: var(--ocre); display:block; }
+.capa-autor {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1rem,2.5vw,1.5rem);
+  font-style: italic; font-weight: 300;
+  color: rgba(232,213,163,.6);
+  margin-bottom: 3rem;
+  letter-spacing: 0.04em;
+}
+.capa-logline {
+  max-width: 620px;
+  font-size: 1.05rem; line-height: 1.75;
+  color: rgba(232,213,163,.82);
+  border-left: 3px solid var(--ocre);
+  padding-left: 1.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.25rem;
+}
+.capa-premios {
+  margin-top: 3.5rem;
+  display: flex; gap: 2rem; flex-wrap: wrap;
+}
+.premio-badge {
+  border: 1px solid rgba(192,112,32,.4);
+  padding: .5rem 1.1rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--ocre);
+}
+
+/* ─────────────────────────────
+   SINOPSE
+───────────────────────────── */
+#sinopse { background: var(--fundo); }
+
+.sinopse-grid {
+  display: grid; grid-template-columns: 3fr 2fr; gap: 4rem; align-items: start;
+}
+.sinopse-texto p {
+  font-size: 1.05rem; line-height: 1.85;
+  color: #3A2C18; margin-bottom: 1.2rem;
+}
+.sinopse-texto .abertura {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem; font-style: italic;
+  line-height: 1.65; color: var(--terra);
+  margin-bottom: 1.8rem;
+}
+.sinopse-aside {}
+.aside-card {
+  background: var(--areia);
+  border: 1px solid var(--linha);
+  padding: 1.6rem;
+  margin-bottom: 1.2rem;
+}
+.aside-card-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--ocre); margin-bottom: .7rem;
+}
+.aside-card p {
+  font-size: .88rem; line-height: 1.65; color: var(--cinza);
+}
+.aside-card strong { color: var(--terra); }
+
+.temas-lista {
+  display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .6rem;
+}
+.tema-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase;
+  border: 1px solid var(--linha);
+  color: var(--cinza); padding: .25rem .65rem;
+  background: white;
+}
+
+/* ─────────────────────────────
+   FICHA TÉCNICA
+───────────────────────────── */
+#ficha { background: var(--areia); }
+
+.ficha-table {
+  width: 100%; border-collapse: collapse;
+}
+.ficha-table tr { border-bottom: 1px solid var(--linha); }
+.ficha-table tr:last-child { border-bottom: none; }
+.ficha-table td {
+  padding: 1rem 0;
+  vertical-align: top;
+}
+.ficha-table td:first-child {
+  font-family: 'DM Mono', monospace;
+  font-size: .65rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ocre); width: 200px; padding-right: 2rem;
+  padding-top: 1.1rem;
+}
+.ficha-table td:last-child {
+  font-size: .95rem; color: var(--escuro); line-height: 1.65;
+}
+
+.premios-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem;
+}
+.premio-item {
+  border-left: 3px solid var(--ocre);
+  padding: .8rem 1rem;
+  background: white;
+}
+.premio-item .p-nome {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 700; font-size: 1rem; color: var(--terra);
+  margin-bottom: .2rem;
+}
+.premio-item .p-ano {
+  font-family: 'DM Mono', monospace;
+  font-size: .6rem; letter-spacing: .15em; color: var(--ocre);
+}
+
+/* ─────────────────────────────
+   AUTOR
+───────────────────────────── */
+#autor { background: var(--fundo); }
+
+.autor-grid {
+  display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start;
+}
+.autor-vitrine {
+  position: sticky; top: 80px;
+}
+.autor-inicial {
+  width: 100%; aspect-ratio: 3/4;
+  background: var(--terra);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 6rem; font-weight: 700; color: var(--ocre);
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+.autor-nome {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-weight: 700; color: var(--terra);
+  margin-bottom: .2rem;
+}
+.autor-cargo {
+  font-family: 'DM Mono', monospace;
+  font-size: .6rem; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--ocre);
+}
+.autor-bio p {
+  font-size: 1rem; line-height: 1.85; color: #3A2C18;
+  margin-bottom: 1.2rem;
+}
+.autor-bio .destaque {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem; font-style: italic;
+  line-height: 1.6; color: var(--terra);
+  border-left: 3px solid var(--sangue);
+  padding-left: 1.2rem; margin: 2rem 0;
+}
+.autor-formacao {
+  margin-top: 2rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+}
+.formacao-item {
+  border-top: 1px solid var(--linha);
+  padding-top: .8rem;
+}
+.formacao-item .fi-label {
+  font-family: 'DM Mono', monospace;
+  font-size: .58rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ocre); margin-bottom: .3rem;
+}
+.formacao-item p {
+  font-size: .85rem; color: var(--cinza); line-height: 1.5;
+}
+
+/* ─────────────────────────────
+   PÚBLICO & MARKETING
+───────────────────────────── */
+#publico { background: var(--escuro); }
+#publico .sec-title { color: var(--palha); }
+#publico .sec-title em { color: var(--ocre); }
+#publico .sec-label { color: var(--ocre); }
+
+.publico-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 3rem;
+}
+.publico-card {
+  border: 1px solid rgba(192,112,32,.25);
+  padding: 1.8rem;
+  background: rgba(255,255,255,.03);
+  transition: background .3s;
+}
+.publico-card:hover { background: rgba(192,112,32,.06); }
+.pc-icon { font-size: 1.6rem; margin-bottom: .8rem; display:block; }
+.pc-titulo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; font-weight: 700;
+  color: var(--palha); margin-bottom: .5rem;
+}
+.pc-desc { font-size: .85rem; line-height: 1.65; color: rgba(232,213,163,.65); }
+
+.estrategias { margin-top: 1rem; }
+.estrategia-item {
+  display: flex; gap: 1.2rem; align-items: flex-start;
+  padding: 1rem 0; border-bottom: 1px solid rgba(192,112,32,.12);
+}
+.estrategia-item:last-child { border-bottom: none; }
+.ei-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem; font-weight: 700;
+  color: rgba(192,112,32,.3); line-height: 1; min-width: 2.2rem;
+}
+.ei-texto strong {
+  display:block; font-size:.9rem; color: var(--palha); margin-bottom: .25rem;
+}
+.ei-texto p { font-size:.82rem; color: rgba(232,213,163,.6); line-height:1.6; }
+
+/* ─────────────────────────────
+   RODAPÉ / CONTATO
+───────────────────────────── */
+footer {
+  background: #120C04;
+  border-top: 1px solid rgba(192,112,32,.2);
+  padding: 3rem 0;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
+}
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; font-weight: 700;
+  color: var(--ocre); margin-bottom: .5rem;
+}
+.footer-sub { font-size:.82rem; color: rgba(232,213,163,.45); line-height:1.6; }
+.footer-col-label {
+  font-family: 'DM Mono', monospace;
+  font-size:.6rem; letter-spacing:.2em; text-transform:uppercase;
+  color: var(--ocre); margin-bottom: .8rem;
+}
+.footer-col p { font-size:.82rem; color: rgba(232,213,163,.5); line-height:1.7; }
+.footer-bottom {
+  margin-top: 2.5rem; padding-top: 1.5rem;
+  border-top: 1px solid rgba(192,112,32,.1);
+  text-align: center;
+  font-family: 'DM Mono', monospace;
+  font-size: .6rem; letter-spacing:.15em; text-transform:uppercase;
+  color: rgba(192,112,32,.4);
+}
+
+/* ── DIVISOR ── */
+.divider {
+  height: 1px; background: var(--linha); margin: 2.5rem 0;
+}
+
+/* ── FADE-IN ── */
+.fi { opacity:0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
+.fi.vis { opacity:1; transform: translateY(0); }
+
+/* ── RESPONSIVO ── */
+@media(max-width:700px){
+  .sinopse-grid, .autor-grid, .footer-grid { grid-template-columns:1fr; gap:2rem; }
+  .publico-grid, .premios-grid, .autor-formacao { grid-template-columns:1fr; }
+  .nav-links a { padding: 0 .6rem; font-size:.6rem; }
+  .capa-titulo { font-size: clamp(3rem,14vw,5rem); }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Torto Arado — Dossiê</div>
+  <ul class="nav-links">
+    <li><a href="#capa" class="ativo">Capa</a></li>
+    <li><a href="#sinopse">Sinopse</a></li>
+    <li><a href="#ficha">Ficha Técnica</a></li>
+    <li><a href="#autor">Autor</a></li>
+    <li><a href="#publico">Público</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════
+     CAPA / LOGLINE
+══════════════════════════ -->
+<section id="capa">
+  <div class="container capa-inner">
+
+    <p class="capa-tag fi">Dossiê de Apresentação · Editora Todavia · 2019</p>
+
+    <h1 class="capa-titulo fi">
+      Torto<span>Arado</span>
+    </h1>
+    <p class="capa-autor fi">Itamar Vieira Junior</p>
+
+    <p class="capa-logline fi">
+      Duas irmãs. Uma faca. Uma terra que nunca foi delas.<br>
+      O Brasil profundo que a literatura precisava nomear.
+    </p>
+
+    <div class="capa-premios fi">
+      <span class="premio-badge">🏆 Prêmio Leya 2018</span>
+      <span class="premio-badge">🏆 Prêmio Jabuti 2020</span>
+      <span class="premio-badge">🏆 Prêmio Oceanos 2020</span>
+      <span class="premio-badge">🌍 +20 países traduzidos</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     SINOPSE
+══════════════════════════ -->
+<section id="sinopse">
+  <div class="container">
+    <p class="sec-label fi">02 — Sinopse</p>
+    <h2 class="sec-title fi">A história que<br><em>o Brasil não contou</em></h2>
+
+    <div class="sinopse-grid">
+      <div class="sinopse-texto fi">
+        <p class="abertura">
+          "Quando retirei a faca da mala de roupas, embrulhada em um pedaço de tecido antigo e encardido, com nódoas escuras e um nó no meio, tinha pouco mais de sete anos."
+        </p>
+        <p>
+          Assim começa <em>Torto Arado</em> — e assim nos é apresentado um dos universos mais densos e perturbadores da ficção brasileira contemporânea. A fazenda Água Negra, no sertão da Bahia, é o palco de uma história que atravessa gerações: a de famílias de trabalhadores rurais negros presas à terra por dívidas que nunca se quitam, por contratos que nunca existiram, por uma liberdade que a abolição prometeu mas não entregou.
+        </p>
+        <p>
+          Bibiana e Belonísia são irmãs. Cresceram entre o cheiro da terra molhada, os ensinamentos do pai Zeca Chapéu Grande — mestre do Jarê, religiosidade afro-brasileira — e o silêncio imposto às mulheres pobres e negras do interior. Um acidente na infância muda para sempre a relação das duas com a palavra: uma delas perde a voz. E é justamente essa voz calada que, no romance, encontra as formas mais surpreendentes de existir.
+        </p>
+        <p>
+          Narrado em três partes com vozes distintas — incluindo a da própria terra —, o romance entrelaça espiritualidade, resistência coletiva, desigualdade estrutural e amor entre mulheres num tecido literário de rara beleza e urgência política. <em>Torto Arado</em> não é sobre o passado: é sobre o Brasil que ainda não acabou de existir.
+        </p>
+      </div>
+
+      <div class="sinopse-aside fi">
+        <div class="aside-card">
+          <p class="aside-card-label">Logline</p>
+          <p>No sertão da Bahia, duas irmãs crescem presas à mesma terra que mata e sustenta — e tentam, cada uma à sua maneira, torcer o destino que a fazenda Água Negra lhes reservou.</p>
+        </div>
+
+        <div class="aside-card">
+          <p class="aside-card-label">Estrutura narrativa</p>
+          <p>Romance em <strong>3 partes</strong>, cada uma com narradora diferente:<br><br>
+          <strong>I. Bibiana</strong> — a irmã que busca resistência coletiva<br>
+          <strong>II. Belonísia</strong> — a irmã que perdeu a voz e encontrou outras linguagens<br>
+          <strong>III. A terra</strong> — narradora-ancestral que fecha o ciclo</p>
+        </div>
+
+        <div class="aside-card">
+          <p class="aside-card-label">Temas centrais</p>
+          <div class="temas-lista">
+            <span class="tema-tag">Escravidão contemporânea</span>
+            <span class="tema-tag">Questão agrária</span>
+            <span class="tema-tag">Racismo estrutural</span>
+            <span class="tema-tag">Identidade negra</span>
+            <span class="tema-tag">Espiritualidade afro-brasileira</span>
+            <span class="tema-tag">Resistência feminina</span>
+            <span class="tema-tag">Pertencimento</span>
+            <span class="tema-tag">Memória ancestral</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     FICHA TÉCNICA
+══════════════════════════ -->
+<section id="ficha">
+  <div class="container">
+    <p class="sec-label fi">03 — Ficha Técnica</p>
+    <h2 class="sec-title fi">Dados<br><em>da obra</em></h2>
+
+    <table class="ficha-table fi">
+      <tr>
+        <td>Título</td>
+        <td><strong>Torto Arado</strong></td>
+      </tr>
+      <tr>
+        <td>Autor</td>
+        <td>Itamar Vieira Junior</td>
+      </tr>
+      <tr>
+        <td>Editora</td>
+        <td>Todavia (Brasil, 2019) · Leya (Portugal, 2018)</td>
+      </tr>
+      <tr>
+        <td>Páginas</td>
+        <td>264 páginas</td>
+      </tr>
+      <tr>
+        <td>Gênero</td>
+        <td>Romance contemporâneo · Ficção literária brasileira</td>
+      </tr>
+      <tr>
+        <td>Público-alvo</td>
+        <td>Adulto e jovem adulto · Leitores de literatura nacional e africana · Público interessado em temas sociais, raciais e rurais</td>
+      </tr>
+      <tr>
+        <td>Formatos</td>
+        <td>Físico (brochura) · E-book · Audiolivro</td>
+      </tr>
+      <tr>
+        <td>Idiomas</td>
+        <td>Traduzido para mais de 20 países, incluindo inglês (Crooked Plow), francês, alemão, italiano, espanhol e holandês</td>
+      </tr>
+      <tr>
+        <td>Série</td>
+        <td>Trilogia da Terra — Livro 1</td>
+      </tr>
+      <tr>
+        <td>Cenário</td>
+        <td>Sertão da Bahia, Brasil · Fazenda Água Negra · Século XX–XXI</td>
+      </tr>
+    </table>
+
+    <div class="divider fi"></div>
+
+    <p class="sec-label fi">Reconhecimentos</p>
+    <div class="premios-grid fi">
+      <div class="premio-item">
+        <p class="p-nome">Prêmio LeYa</p>
+        <p class="p-ano">2018 · Concedido por unanimidade pelo júri</p>
+      </div>
+      <div class="premio-item">
+        <p class="p-nome">Prêmio Jabuti</p>
+        <p class="p-ano">2020 · Melhor Romance</p>
+      </div>
+      <div class="premio-item">
+        <p class="p-nome">Prêmio Oceanos</p>
+        <p class="p-ano">2020 · Literatura em Língua Portuguesa</p>
+      </div>
+      <div class="premio-item">
+        <p class="p-nome">Prix Montluc Résistance et Liberté</p>
+        <p class="p-ano">França · Adaptação musical e reconhecimento internacional</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     PERFIL DO AUTOR
+══════════════════════════ -->
+<section id="autor">
+  <div class="container">
+    <p class="sec-label fi">04 — Perfil do Autor</p>
+    <h2 class="sec-title fi">Itamar<br><em>Vieira Junior</em></h2>
+
+    <div class="autor-grid">
+      <div class="autor-vitrine fi">
+        <div class="autor-inicial">I</div>
+        <p class="autor-nome">Itamar Vieira Junior</p>
+        <p class="autor-cargo">Escritor · Geógrafo · Doutor em Estudos Étnicos</p>
+      </div>
+
+      <div class="autor-bio fi">
+        <p>
+          Itamar Vieira Junior nasceu em Salvador, Bahia, em 1979. Cresceu entre o Nordeste e o Maranhão, carregando desde cedo a paisagem do Brasil profundo que marcaria toda a sua escrita. Foi o primeiro beneficiário da Bolsa Milton Santos, dedicada a jovens negros de baixa renda, durante sua graduação em Geografia pela Universidade Federal da Bahia.
+        </p>
+
+        <div class="destaque">
+          "Escrevo sobre o que conheço de dentro: a terra, os que a trabalham e os que nunca foram donos dela."
+        </div>
+
+        <p>
+          Doutor em Estudos Étnicos e Africanos pela UFBA, Itamar construiu uma trajetória acadêmica e profissional que alimenta diretamente sua ficção. Por anos trabalhou como funcionário do INCRA — o Instituto Nacional de Colonização e Reforma Agrária —, atuando em campo junto a comunidades quilombolas e trabalhadores rurais. Esse contato direto com as tensões fundiárias, a invisibilidade jurídica e a resistência cultural das populações negras do sertão baiano está na base de toda a narrativa de <em>Torto Arado</em>.
+        </p>
+        <p>
+          Seu romance de estreia em grande editora tornou-se um fenômeno literário sem precedentes recentes na literatura brasileira: mais de 100 mil exemplares vendidos, três dos prêmios mais importantes da língua portuguesa e tradução para mais de 20 países. Em 2024, <em>Torto Arado</em> foi adaptado para o musical, ampliando ainda mais seu alcance. Seu segundo livro, <em>Salvar o Fogo</em>, venceu o Prêmio Jabuti de 2024.
+        </p>
+
+        <div class="autor-formacao">
+          <div class="formacao-item">
+            <p class="fi-label">Formação</p>
+            <p>Geógrafo<br>Mestre em Geografia · UFBA<br>Doutor em Estudos Étnicos e Africanos · UFBA</p>
+          </div>
+          <div class="formacao-item">
+            <p class="fi-label">Atuação profissional</p>
+            <p>Servidor público federal · INCRA<br>Pesquisador de territórios quilombolas<br>Escritor e conferencista</p>
+          </div>
+          <div class="formacao-item">
+            <p class="fi-label">Outras obras</p>
+            <p><em>A oração do carrasco</em> (contos, 2017)<br><em>Salvar o Fogo</em> (romance, 2022)<br><em>Coração sem Medo</em> (2025)</p>
+          </div>
+          <div class="formacao-item">
+            <p class="fi-label">Presença internacional</p>
+            <p>+20 países traduzidos<br>Feira do Livro de Frankfurt<br>Reconhecimento na Europa, América e Ásia</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     PÚBLICO & MARKETING
+══════════════════════════ -->
+<section id="publico">
+  <div class="container">
+    <p class="sec-label fi">05 — Plano de Público & Marketing</p>
+    <h2 class="sec-title fi">Para quem é<br><em>Torto Arado</em></h2>
+
+    <div class="publico-grid fi">
+      <div class="publico-card">
+        <span class="pc-icon">📚</span>
+        <p class="pc-titulo">Leitores de literatura nacional</p>
+        <p class="pc-desc">Público que acompanha a ficção literária brasileira contemporânea e busca obras de alto valor estético e engajamento social — faixa entre 20 e 50 anos, habituada a lançamentos de editoras como Companhia das Letras, Todavia e Record.</p>
+      </div>
+      <div class="publico-card">
+        <span class="pc-icon">🎓</span>
+        <p class="pc-titulo">Estudantes e professores</p>
+        <p class="pc-desc">A obra entrou em listas de leitura obrigatória e recomendada de universidades e escolas de ensino médio em todo o Brasil, especialmente em disciplinas de Literatura, Sociologia, História e Geografia.</p>
+      </div>
+      <div class="publico-card">
+        <span class="pc-icon">✊</span>
+        <p class="pc-titulo">Leitores negros e periféricos</p>
+        <p class="pc-desc">Um dos primeiros grandes romances da literatura mainstream brasileira a colocar no centro mulheres negras e trabalhadoras rurais como protagonistas plenas e narradoras de sua própria história.</p>
+      </div>
+      <div class="publico-card">
+        <span class="pc-icon">🌍</span>
+        <p class="pc-titulo">Mercado internacional</p>
+        <p class="pc-desc">Já consolidado em mais de 20 países, o livro alcança leitores internacionais interessados em literatura pós-colonial, afro-diaspórica, questões de terra e gênero — com forte recepção na Europa e nas Américas.</p>
+      </div>
+    </div>
+
+    <div class="divider" style="border-color:rgba(192,112,32,.15); background:rgba(192,112,32,.15);"></div>
+
+    <p class="sec-label fi" style="color:var(--ocre);">Estratégias de divulgação</p>
+    <div class="estrategias fi">
+      <div class="estrategia-item">
+        <span class="ei-num">1</span>
+        <div class="ei-texto">
+          <strong>Influenciadores literários e BookTok/Bookstagram</strong>
+          <p>A difusão viral do livro se deu em grande parte por comunidades de leitores nas redes sociais. Personalidades públicas e leitoras negras impulsionaram o boca a boca digital com impacto mensurável nas vendas.</p>
+        </div>
+      </div>
+      <div class="estrategia-item">
+        <span class="ei-num">2</span>
+        <div class="ei-texto">
+          <strong>Inserção em currículos escolares e universitários</strong>
+          <p>A indicação da obra em vestibulandos, projetos de leitura do ensino médio (como o Projeto Vozes do Ifes) e listas universitárias garante demanda contínua e renovação constante do público leitor.</p>
+        </div>
+      </div>
+      <div class="estrategia-item">
+        <span class="ei-num">3</span>
+        <div class="ei-texto">
+          <strong>Feiras literárias e festivais internacionais</strong>
+          <p>Presença consolidada na Feira de Frankfurt, FLIP, Bienal do Livro e eventos internacionais de literatura em língua portuguesa posicionam o título como obra de prestígio global.</p>
+        </div>
+      </div>
+      <div class="estrategia-item">
+        <span class="ei-num">4</span>
+        <div class="ei-texto">
+          <strong>Adaptações e linguagens múltiplas</strong>
+          <p>A versão musical do romance e o audiolivro ampliam os canais de acesso à obra, atingindo públicos que não necessariamente chegam pela leitura do livro físico.</p>
+        </div>
+      </div>
+      <div class="estrategia-item">
+        <span class="ei-num">5</span>
+        <div class="ei-texto">
+          <strong>Clube do livro e grupos de leitura</strong>
+          <p>A estrutura narrativa em três partes e a riqueza temática tornam <em>Torto Arado</em> ideal para discussões coletivas, sendo obra frequente em clubes de leitura presenciais e online.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════
+     RODAPÉ
+══════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <p class="footer-brand">Torto Arado</p>
+        <p class="footer-sub">Dossiê de apresentação elaborado como portfólio digital do Projeto Vozes — Ifes Campus Colatina · Turma M15 · 2026 · Professora Rita Dias</p>
+      </div>
+      <div>
+        <p class="footer-col-label">Editora no Brasil</p>
+        <p class="footer-col">Todavia<br>todavialivros.com.br<br><br>1ª ed. brasileira: 2019</p>
+      </div>
+      <div>
+        <p class="footer-col-label">Autor</p>
+        <p class="footer-col">Itamar Vieira Junior<br>Salvador, BA · 1979<br><br>Geógrafo · INCRA · UFBA</p>
+      </div>
+    </div>
+    <p class="footer-bottom">Torto Arado © Itamar Vieira Junior · Todavia · Todos os direitos reservados · Dossiê educacional sem fins comerciais</p>
+  </div>
+</footer>
+
+<script>
+// Fade-in ao rolar
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+
+// Nav ativo
+const secs = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.nav-links a');
+const navObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){
+      links.forEach(a => a.classList.remove('ativo'));
+      const l = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+      if(l) l.classList.add('ativo');
+    }
+  });
+}, { threshold: 0.45 });
+secs.forEach(s => navObs.observe(s));
+</script>
+
+</body>
+</html>
